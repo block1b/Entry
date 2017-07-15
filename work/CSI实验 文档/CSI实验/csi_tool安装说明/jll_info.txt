@@ -1,0 +1,5 @@
+编译教程
+https://software.intel.com/en-us/get-started-galileo-mac-step4
+
+又一个教程：
+http://www.malinov.com/Home/sergey-s-blog/intelgalileo-addingwifi

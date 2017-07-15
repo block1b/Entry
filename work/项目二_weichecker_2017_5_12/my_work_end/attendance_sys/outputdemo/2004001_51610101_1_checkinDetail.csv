@@ -1,0 +1,6 @@
+CheckinResult,ProofPath,IsSucc,CheckinTime,StuID,CheckinType
+到勤,null,null,2017-07-11 15:07:20,201516920101,man
+到勤,null,null,2017-07-11 15:07:20,201516920104,man
+缺勤,null,null,2017-07-11 15:07:20,201516920102,man
+迟到,null,null,2017-07-11 15:07:20,201516920105,man
+早退,null,null,2017-07-11 15:07:20,201516920104,man

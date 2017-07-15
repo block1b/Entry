@@ -1,0 +1,32 @@
+本文件提供测试数据
+教师输入的数据有3项
+1.课头id
+2.手工增加/修改考勤的选择
+3.手工考勤的记录
+（在最终本用例的输入是会以用户选择菜单的形式作为输入）
+
+输入条件,有效等价类，无效等价类
+系统内存在与否,是，否
+选项存在与否，是，否
+
+演示数据
+执行手工考勤的教师id
+TEACHERID = "2004344"
+该教师选择的课头
+COURSEID = "51610134"
+该教师选择的考勤次序
+SEQID = "1"
+该教师选择的考勤记录详细信息表的文件名
+DEMODETAILFILENAME = "../internal/" + man.detail_filename_build("2004643", "51610145", "01")
+该教师输入的手工考勤记录
+MANATTENDANCEINFO = [
+    {"StuID": "201416920101", "CheckinResult": "no"},
+    {"StuID": "201416920105", "CheckinResult": "no"}
+]
+该教师选择的考勤记录汇总表的文件名
+DEMOSUMFILENAME = "../internal/" + man.sum_filename_build("2004643", "51610145")
+该教师将要修改的考勤记录
+DEMOSUMINFO = [
+    {"StuID": "201416920128", "CheckinResult": "in"},
+    {"StuID": "201416920105", "CheckinResult": "in"}
+]

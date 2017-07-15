@@ -1,0 +1,6 @@
+1.Twisted的reactor只有通过调用reactor.run()才启动
+2.reactor循环是在其开始线的程中运行，也就是运行在主线程中
+3.一旦启动，reactor就会在程序的控制下（或者具体在一个启动他的线程的控制下）一直运行下去
+4.reactor空转时不需要消耗任何cpu的资源
+5.并不需要显式的创建reactor，只需要引入就行了。
+	（解析：在Twisted中，reactor是Singleton模式，即在一个程序中只能有一个reactor，并且只要你引入他就相应的创建了一个。）

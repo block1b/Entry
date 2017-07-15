@@ -1,0 +1,177 @@
+单元测试计划
+
+1.初步了解 Unit testing framework 的使用方法。
+2.列举可以进行测试的单元。
+3.为测试单元 设计参数，目标返回值
+4.使用该模块进行测试，记录测试结果。
+5.对存在错误的单元，分析修改。
+6.重复345
+
+任务：1.初步了解 Unit testing framework 的使用方法。
+计划时间：2017年6月9日14:41:37->17:00
+完成度：10%
+完成时间：2017年6月9日17:53:39
+完成情况：掌握了复数的返回值与目标值对比的方法，复杂的使用方式本次测试不需要，待定。
+学习记录：见文件 unittest_learn
+
+任务：2.列举可以进行测试的单元。
+计划时间：2017年6月9日17:56:59->00:00
+完成度：100%
+完成时间：2017年6月9日20:47:48
+完成情况：完成
+记录：
+类1.StuInfo:
+方法：1.get_all_stu_info（stuinfofilename）return stuinfo 获取所有学生信息文件
+输入条件|有效等价类|无效等价类
+文件名状态|文件名存在|文件名不存在
+方法：2.get_wait_checkin_stu_info(classnames, all_stu_info) return wait_stu_info 获取班级区间内的学生信息
+输入条件|有效等价类|无效等价类
+
+3.def get_stuids(self, wait_stu_info):# 获取学生id集合
+4. # 验证输入的stu_id是否存在 def stuid_exist(self, stu_id, stu_ids):
+
+class TecInfo(BaseFile):
+# 获得所有教师信息
+    def get_all_teacher_info(self, teacher_filename):
+
+# 验证教师是否存在
+    def teacher_exist(self, teacher_id, teacher_ids):
+# 通过微信号查找该教师信息
+    def get_teacher_id_where_wechat_id(self, wechat_id, all_teacher_info):
+
+class CourseInfo(BaseFile):
+# 获取所有课程信息
+    def get_all_course_info(self, course_filename):
+# 获取某教师的所有课程信息
+    def get_course_info_from_teacher_id(self, teacher_id, all_course_info):
+# 获取课头名集合
+    def get_course_names(self, a_teacher_course_infos):
+# 获取课头id集合
+    def get_course_names(self, a_teacher_course_infos):
+# 将课程信息内的coursename做keys,courseis做values，做枚举效果的字典
+    def set_course_enum(self, a_teacher_course_infos):
+# 验证教师输入的课头是否存在
+    def courseid_exist(self, course_id, course_ids):
+# 获取本次考勤的学生班级集合
+    def get_classnames(self, course_id, teacherid, a_teacher_course_infos):
+
+class SeqInfo(BaseFile):
+# 获取esq表数据
+    def get_all_seq_info(self, eql_filename):
+# 分配考勤次序号
+    def get_seqid(self, teacherID, courseID, all_seq_info):
+# 构造一条seq记录
+    def set_seq_line(self, teacherID, courseID, seqID, startTime):
+# 将新的seq记录加入seq表
+    def seq_update(self, new_seq_line, all_seq_info):
+# 将seq表写入文件
+    def write_seq(self, all_seq_info, seq_filename):
+
+class DetailInfo(BaseFile):
+# detail文件名构建
+    def set_detail_filename(self, teacherID, courseID, seqID):
+# 获取detail表信息
+    def get_all_detail_info(self, detail_filename):
+# proofpath内容构建 （checkintime中间有空格作为文件名可能有误，注意）
+    def set_proofpath(self, stuID, courseID, seqID, checkintime):
+# detail表构造行数据
+    def set_detail_line(self, stuID, checkintime, proofpath, checkintype, issucc, checkinresult):
+# 将新的detail行加入detail表
+    def detail_update(self, detail_lines, all_detail_info):
+# 将detailed表写入文件
+    def write_detail(self, all_detail_info, detail_filename):
+# 求时间差
+    def get_time_sub(self, date1, date2):
+# 先将detail每行的result判断
+    def set_detail_result(self, detail_line, starttime):
+# 获得detail表的统计结果stu_checkin_result
+    def detail_sum(self, all_detail_info, stuids, seqid):
+
+class SumInfo(BaseFile):
+# sum 文件名构建
+    def set_sum_filename(self, teacherID, courseID):
+# 获取sum表数据
+    def get_all_sum_info(self, sum_filename):
+# CheckinseqID构建
+    def set_checkinseqid(self, seqID):
+# sum表行数据更新
+    def sum_line_update(self, sum_line, checkinseqid, checkinresult):
+# 更新sum表数据
+    def sum_update(self, stu_checkin_result, sum_info, checkinseqid):
+# sum表初始化
+    def sum_creat(self, stuids):
+# 将sum表写入文件
+    def write_sum(self, sum_data, sum_filename):
+
+class CheckInArray(object):
+# 判断该当前对象与队首是否为相同节次
+    def same_section(self, now_cii, cii_arry):
+# 判断当前对象与队列中的对象，班级是否冲突
+    def same_classnames(self, now_cii, list_arry):
+# 删除队列内与当前考勤对象有学生冲突的考勤对象并判断队首是否被更新
+    def remove_arry_same_class(self, now_cii, cii_arry):
+# 判断当前考勤对象与考勤队列中的对象，教师是否冲突
+    def same_tecid(self, now_cii, list_arry):
+# 更新考勤队列
+    def update_arry(self, now_cii, cii_arry):
+
+class TimeWindows(object):
+# 获取当前系统时间
+    def get_time(self):
+# 获取当前系统时间
+    def get_time2(self):
+# 独立的踢出队列函数
+    def time_check(self):
+# 教师进入队列后开始进行倒计时   在第一个教师进入队列时和队首被踢时调用
+    def start_check_time(self, timewindow):
+def stop_check(self, cii_arry, hand_start_time):
+# 判定当前节次
+    def get_now_section(self, now_time):
+
+class IniInfo(object):
+# 读取配置文件中的课程时间表
+    def read_ini(self):
+# 获取配置文件中的时间窗口长度
+    def get_window_long(self):
+
+class CheckInInfo(object):
+# 获取待考勤班级s
+    def get_checkin_classnames(self, teacher_id, course_id, course_filename):
+# 获取待考勤学生s
+    def get_checkin_stuids(self, classnames, stu_filename):
+
+class TecStartCheckInControl(object):
+# 初始化seq表
+    def creat_seq(self, seq_filename):
+# 更新seq表
+    def update_seq(self, now_cii, seq_filename):
+# 初始化detail表
+    def creat_detail(self, now_cii, default_path):
+ # 教师发起自助考勤
+    def tec_start_checkin(self, now_cii, seq_filename):
+# 查找该学生所属的考勤对象
+    def get_checkininfo(self, stu_id, stu_filename):
+# 构造detail_line信息
+    def set_new_detail_line(self, stuid, acii, result="wait"):
+
+class TecSampleCheckInControl(object):
+# 通过tecid查询考勤学生集合
+    def get_checkin_stuids(self, tec_id, checkerin_arry):
+# 抽取部分学生
+    def get_part_stuids(self, all_stuids, percent=5):
+# 构造detail_line信息
+    def set_new_detail_line(self, stuid, acii, result="zaotui"):
+# 加入detail文件
+    def add_to_detail(self, new_details, now_cii, default_path):
+
+class StuJoinCheckInControl(object):
+# 查找该学生所属的考勤对象
+    def get_checkininfo(self, stu_id, cii_list):
+# 构造detail_line信息
+    def set_new_detail_line(self, stuid, acii, result="wait"):
+ # 提交/请假（result="wait"/"qj"）
+    def stu_send_checkininfo(self, stuid, result, cii_list, default_path):
+
+任务：3456为每个方法设计测试数据，然后测试。
+统计有13个类方法。
+工时：10小时
